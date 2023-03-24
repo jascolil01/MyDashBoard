@@ -10,4 +10,7 @@ router.get('/users/:id', controllers.getUserById)
 router.put('/users/update_user/:id', controllers.updateUser)
 router.delete('/users/delete_user/:id', controllers.deleteUser)
 
+router.post('/todo', controllers.createToDo)
+router.get('/todo/by_userId/:id', controllers.getTodoByUserId)
+
 module.exports = router;

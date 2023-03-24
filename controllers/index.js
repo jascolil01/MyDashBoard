@@ -58,10 +58,39 @@ const deleteUser = async (req, res) => {
   }
 }
 
+const createToDo = async (req, res) => {
+  try {
+    const todo = await new TodoItem(req.body)
+    await todo.save()
+    return res.status(201).json({
+      todo,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
+const getTodoByUserId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await TodoItem.find({
+      "userId": id
+    })
+    if (todo) {
+      return res.status(200).json({ todo });
+    }
+    return res.status(404).send('Todo with the specified user ID does not exists');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  createToDo,
+  getTodoByUserId
 }
