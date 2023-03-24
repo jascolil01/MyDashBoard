@@ -3,7 +3,9 @@ const Schema = mongoose.Schema
 
 const TodoItem = new Schema(
   {
-
+    name: { type: String, required: true },
+    content: { type: String, required: true },
+    userId: { type: Schema.User._id, required: true }
   },
   { timestamps: true },
 )
