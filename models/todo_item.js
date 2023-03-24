@@ -5,7 +5,7 @@ const TodoItem = new Schema(
   {
     name: { type: String, required: true },
     content: { type: String, required: true },
-    userId: { type: Schema.User._id, required: true }
+    userId: { type: String, required: true }
   },
   { timestamps: true },
 )
