@@ -84,6 +84,26 @@ const getTodoByUserId = async (req, res) => {
     return res.status(500).send(error.message);
   }
 }
+const updateTodo = async (req, res) => {
+  try {
+    const todo = await TodoItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(todo)
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const deleteTodo = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await TodoItem.findByIdAndDelete(id)
+    if (deleted) {
+      return res.status(200).send("TodoItem deleted");
+    }
+    throw new Error("TodoItem not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
 
 module.exports = {
   createUser,
@@ -92,5 +112,7 @@ module.exports = {
   updateUser,
   deleteUser,
   createToDo,
-  getTodoByUserId
+  getTodoByUserId,
+  updateTodo,
+  deleteTodo
 }

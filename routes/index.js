@@ -12,5 +12,7 @@ router.delete('/users/delete_user/:id', controllers.deleteUser)
 
 router.post('/todo', controllers.createToDo)
 router.get('/todo/by_userId/:id', controllers.getTodoByUserId)
+router.put('/todo/update_todo/:id', controllers.updateTodo)
+router.delete('/todo/delete_todo/:id', controllers.deleteTodo)
 
 module.exports = router;
