@@ -198,7 +198,51 @@ const deleteComment = async (req, res) => {
     return res.status(500).send(error.message);
   }
 }
-
+const createHobby = async (req, res) => {
+  try {
+    const hobby = await new HobbyItem(req.body)
+    await hobby.save()
+    return res.status(201).json({
+      hobby,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+const getHobbyByUserId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await TodoItem.find({
+      "userId": id
+    })
+    if (todo) {
+      return res.status(200).json({ todo });
+    }
+    return res.status(404).send('Todo with the specified user ID does not exists');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const updateHobby = async (req, res) => {
+  try {
+    const todo = await TodoItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(todo)
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const deleteHobby = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await TodoItem.findByIdAndDelete(id)
+    if (deleted) {
+      return res.status(200).send("TodoItem deleted");
+    }
+    throw new Error("TodoItem not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
 
 module.exports = {
   createUser,
@@ -218,5 +262,6 @@ module.exports = {
   createComment,
   getCommentByPostId,
   updateComment,
-  deleteComment
+  deleteComment,
+  createHobby
 }
