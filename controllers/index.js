@@ -257,13 +257,13 @@ const createBudget = async (req, res) => {
 const getBudgetByUserId = async (req, res) => {
   try {
     const { id } = req.params;
-    const hobby = await HobbyItem.find({
+    const budget = await BudgetItem.find({
       "userId": id
     })
-    if (hobby) {
-      return res.status(200).json({ hobby });
+    if (budget) {
+      return res.status(200).json({ budget });
     }
-    return res.status(404).send('Hobby with the specified user ID does not exists');
+    return res.status(404).send('Budget Item with the specified user ID does not exists');
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -312,5 +312,6 @@ module.exports = {
   getHobbyByUserId,
   updateHobby,
   deleteHobby,
-  createBudget
+  createBudget,
+  getBudgetByUserId
 }
