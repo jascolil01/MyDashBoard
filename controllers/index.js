@@ -234,11 +234,11 @@ const updateHobby = async (req, res) => {
 const deleteHobby = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleted = await TodoItem.findByIdAndDelete(id)
+    const deleted = await HobbyItem.findByIdAndDelete(id)
     if (deleted) {
-      return res.status(200).send("TodoItem deleted");
+      return res.status(200).send("HobbyItem deleted");
     }
-    throw new Error("TodoItem not found");
+    throw new Error("HobbyItem not found");
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -265,5 +265,6 @@ module.exports = {
   deleteComment,
   createHobby,
   getHobbyByUserId,
-  updateHobby
+  updateHobby,
+  deleteHobby
 }
