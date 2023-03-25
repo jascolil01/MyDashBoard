@@ -212,13 +212,13 @@ const createHobby = async (req, res) => {
 const getHobbyByUserId = async (req, res) => {
   try {
     const { id } = req.params;
-    const todo = await TodoItem.find({
+    const hobby = await HobbyItem.find({
       "userId": id
     })
-    if (todo) {
-      return res.status(200).json({ todo });
+    if (hobby) {
+      return res.status(200).json({ hobby });
     }
-    return res.status(404).send('Todo with the specified user ID does not exists');
+    return res.status(404).send('Hobby with the specified user ID does not exists');
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -263,5 +263,6 @@ module.exports = {
   getCommentByPostId,
   updateComment,
   deleteComment,
-  createHobby
+  createHobby,
+  getHobbyByUserId
 }
