@@ -279,11 +279,11 @@ const updateBudget = async (req, res) => {
 const deleteBudget = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleted = await HobbyItem.findByIdAndDelete(id)
+    const deleted = await BudgetItem.findByIdAndDelete(id)
     if (deleted) {
-      return res.status(200).send("HobbyItem deleted");
+      return res.status(200).send("BudgetItem deleted");
     }
-    throw new Error("HobbyItem not found");
+    throw new Error("BudgetItem not found");
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -314,5 +314,6 @@ module.exports = {
   deleteHobby,
   createBudget,
   getBudgetByUserId,
-  updateBudget
+  updateBudget,
+  deleteBudget
 }
