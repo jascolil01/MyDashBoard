@@ -225,8 +225,8 @@ const getHobbyByUserId = async (req, res) => {
 }
 const updateHobby = async (req, res) => {
   try {
-    const todo = await TodoItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    res.status(200).json(todo)
+    const hobby = await HobbyItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(hobby)
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -264,5 +264,6 @@ module.exports = {
   updateComment,
   deleteComment,
   createHobby,
-  getHobbyByUserId
+  getHobbyByUserId,
+  updateHobby
 }

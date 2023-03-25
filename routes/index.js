@@ -28,5 +28,6 @@ router.delete('/comment/delete_comment/:id', controllers.deleteComment)
 
 router.post('/hobby', controllers.createHobby)
 router.get('/hobby/by_userId/:id', controllers.getHobbyByUserId)
+router.put('/hobby/update_hobby/:id', controllers.updateHobby)
 
 module.exports = router;
