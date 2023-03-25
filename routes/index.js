@@ -31,4 +31,6 @@ router.get('/hobby/by_userId/:id', controllers.getHobbyByUserId)
 router.put('/hobby/update_hobby/:id', controllers.updateHobby)
 router.delete('/hobby/delete_hobby/:id', controllers.deleteHobby)
 
+router.post('/budget', controllers.createBudget)
+
 module.exports = router;

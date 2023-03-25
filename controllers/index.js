@@ -243,6 +243,51 @@ const deleteHobby = async (req, res) => {
     return res.status(500).send(error.message);
   }
 }
+const createBudget = async (req, res) => {
+  try {
+    const budget = await new BudgetItem(req.body)
+    await budget.save()
+    return res.status(201).json({
+      budget,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+const getBudgetByUserId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const hobby = await HobbyItem.find({
+      "userId": id
+    })
+    if (hobby) {
+      return res.status(200).json({ hobby });
+    }
+    return res.status(404).send('Hobby with the specified user ID does not exists');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const updateBudget = async (req, res) => {
+  try {
+    const hobby = await HobbyItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(hobby)
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const deleteBudget = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await HobbyItem.findByIdAndDelete(id)
+    if (deleted) {
+      return res.status(200).send("HobbyItem deleted");
+    }
+    throw new Error("HobbyItem not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
 
 module.exports = {
   createUser,
@@ -266,5 +311,6 @@ module.exports = {
   createHobby,
   getHobbyByUserId,
   updateHobby,
-  deleteHobby
+  deleteHobby,
+  createBudget
 }
