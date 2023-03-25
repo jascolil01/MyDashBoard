@@ -270,8 +270,8 @@ const getBudgetByUserId = async (req, res) => {
 }
 const updateBudget = async (req, res) => {
   try {
-    const hobby = await HobbyItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    res.status(200).json(hobby)
+    const budget = await BudgetItem.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(budget)
   } catch (error) {
     return res.status(500).send(error.message);
   }
@@ -313,5 +313,6 @@ module.exports = {
   updateHobby,
   deleteHobby,
   createBudget,
-  getBudgetByUserId
+  getBudgetByUserId,
+  updateBudget
 }
