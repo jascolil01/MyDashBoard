@@ -1,11 +1,11 @@
 <template>
-  <h1>Hi</h1>
+  <h1>{{ userInfo.name }}'s Dashboard</h1>
 </template>
 
 <script>
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'UserPage',
@@ -20,8 +20,10 @@ export default {
   },
   methods: {
     async getUserInfo() {
-      const res = await axios.get(`${BASE_URL}users/6421b9dc8f6804c90be72ce9`)
-      console.log(res)
+      const route = useRoute()
+      const res = await axios.get(`${BASE_URL}users/${route.params.userId}`)
+      console.log(res.data.user)
+      this.userInfo = res.data.user
     }
 
 

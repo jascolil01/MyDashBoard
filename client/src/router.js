@@ -24,7 +24,7 @@ const routes = [
   { path: '/Post/:userId', component: PostPage, name: 'Post' },
   { path: '/SignIn', component: SignIn, name: 'SignIn' },
   { path: '/ToDo/:userId', component: ToDo, name: 'ToDo' },
-  { path: '/UserPage', component: UserPage, name: 'UserPage' }
+  { path: '/UserPage/:userId', component: UserPage, name: 'UserPage' }
 ]
 
 const router = createRouter({
