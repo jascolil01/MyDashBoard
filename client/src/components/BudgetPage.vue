@@ -6,7 +6,7 @@
 
 
 export default {
-  name: 'Feed',
+  name: 'BudgetPage',
   components: {
 
   }

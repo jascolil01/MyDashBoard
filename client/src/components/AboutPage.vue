@@ -10,7 +10,7 @@
 
 
 export default {
-  name: 'About',
+  name: 'AboutPage',
   components: {
 
   }

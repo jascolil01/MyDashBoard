@@ -6,7 +6,7 @@
 
 
 export default {
-  name: 'Hobby',
+  name: 'PostPage',
   components: {
 
   }

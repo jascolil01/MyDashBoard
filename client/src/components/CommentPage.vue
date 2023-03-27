@@ -6,7 +6,7 @@
 
 
 export default {
-  name: 'Calculator',
+  name: 'CommentPage',
   components: {
 
   }
