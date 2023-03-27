@@ -9,10 +9,12 @@ import PostPage from './components/PostPage.vue'
 import SignIn from './components/SignIn.vue'
 import ToDo from './components/ToDo.vue'
 import UserPage from './components/UserPage.vue'
+import HomePage from './components/HomePage.vue'
 
 
 
 const routes = [
+  { path: '/', component: HomePage, name: 'HomePage' },
   { path: '/About', component: AboutPage, name: 'About' },
   { path: '/Budget/:userId', component: BudgetPage, name: 'Budget' },
   { path: '/Calculator', component: CalculatorPage, name: 'Calculator' },
