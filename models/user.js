@@ -7,9 +7,6 @@ const User = new Schema(
     username: { type: String, required: true },
     password: { type: String, required: true },
     salary: { type: Number, required: true },
-    budget_list: { type: Array, required: false },
-    todo_list: { type: Array, required: false },
-    hobby_list: { type: Array, required: false }
   },
   { timestamps: true },
 )
