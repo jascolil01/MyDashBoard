@@ -1,7 +1,7 @@
 <template>
   <h1>{{ userInfo.name }}'s Dashboard</h1>
   <div>
-    <CalculatorPage />
+    <!-- <CalculatorPage /> -->
     <BudgetPage />
     <HobbyPage />
     <ToDo />
@@ -13,7 +13,7 @@
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import { useRoute } from 'vue-router'
-import CalculatorPage from './CalculatorPage.vue'
+// import CalculatorPage from './CalculatorPage.vue'
 import PostPage from './PostPage.vue'
 import HobbyPage from './HobbyPage.vue'
 import ToDo from './ToDo.vue'
@@ -22,7 +22,7 @@ import BudgetPage from './BudgetPage.vue'
 export default {
   name: 'UserPage',
   components: {
-    CalculatorPage,
+    // CalculatorPage,
     PostPage,
     HobbyPage,
     ToDo,
