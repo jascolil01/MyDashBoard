@@ -1,5 +1,5 @@
 <template>
-  <h1>CalculatorPage</h1>
+  <div></div>
 </template>
 
 <script>
@@ -9,7 +9,10 @@ export default {
   name: 'CalculatorPage',
   components: {
 
-  }
+  },
+  data: () => ({
+    test: []
+  })
 }
 </script>
 
