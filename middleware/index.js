@@ -11,12 +11,12 @@ const hashPassword = async (password) => {
 }
 
 const comparePassword = async (storedPassword, password) => {
+  // console.log(storedPassword)
   let passwordMatch = await bcrypt.compare(password, storedPassword)
   return passwordMatch
 }
 
 const createToken = (payload) => {
-
   let token = jwt.sign(payload, APP_SECRET)
   return token
 }
@@ -51,9 +51,9 @@ const verifyToken = (req, res, next) => {
 }
 
 module.exports = {
-  hashPassword,
-  comparePassword,
-  createToken,
   stripToken,
-  verifyToken
+  verifyToken,
+  createToken,
+  comparePassword,
+  hashPassword
 }

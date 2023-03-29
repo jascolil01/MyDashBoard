@@ -4,6 +4,7 @@ const Comment = require('../models/comment');
 const HobbyItem = require('../models/hobby_item');
 const Post = require('../models/post');
 const TodoItem = require('../models/todo_item');
+const middleware = require('../middleware')
 
 
 const createUser = async (req, res) => {
@@ -288,6 +289,41 @@ const deleteBudget = async (req, res) => {
     return res.status(500).send(error.message);
   }
 }
+const Login = async (req, res) => {
+  try {
+    const { email, password } = req.body
+    const user = await User.findOne({ email: email })
+    console.log(user)
+    let matched = await middleware.comparePassword(
+      user.passwordDigest,
+      password
+    )
+    if (matched) {
+      let payload = {
+        id: user.id,
+        email: user.email
+      }
+      let token = middleware.createToken(payload)
+      return res.send({ user: payload, token })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({ status: 'Error', msg: 'An error has occurred!' })
+  }
+}
+
+const Register = async (req, res) => {
+  try {
+    const { email, password, name, username, salary } = req.body
+    let passwordDigest = await middleware.hashPassword(password)
+    const user = await User.create({ email, passwordDigest, name, username, salary })
+    res.send(user)
+  } catch (error) {
+    throw error
+  }
+}
+
 
 module.exports = {
   createUser,
@@ -315,5 +351,7 @@ module.exports = {
   createBudget,
   getBudgetByUserId,
   updateBudget,
-  deleteBudget
+  deleteBudget,
+  Login,
+  Register
 }
