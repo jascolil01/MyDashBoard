@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ userInfo.name }}'s Dashboard</h1>
+  <h1>{{ userInfo._id }}'s Dashboard</h1>
   <div>
     <!-- <CalculatorPage /> -->
     <BudgetPage />
@@ -12,7 +12,7 @@
 <script>
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-import { useRoute } from 'vue-router'
+// import { useRoute } from 'vue-router'
 // import CalculatorPage from './CalculatorPage.vue'
 import PostPage from './PostPage.vue'
 import HobbyPage from './HobbyPage.vue'
@@ -36,9 +36,8 @@ export default {
   },
   methods: {
     async getUserInfo() {
-      const route = useRoute()
-      const res = await axios.get(`${BASE_URL}users/${route.params.userId}`)
-      console.log(res.data.user)
+      // const route = useRoute()
+      const res = await axios.get(`${BASE_URL}users/6421b9dc8f6804c90be72ce9`)
       this.userInfo = res.data.user
     }
 

@@ -20,11 +20,11 @@ const routes = [
   { path: '/Calculator', component: CalculatorPage, name: 'Calculator' },
   { path: '/Comment/:postId', component: CommentPage, name: 'Comment' },
   { path: '/Feed', component: FeedPage, name: 'Feed' },
-  { path: '/Hobby/:userId', component: HobbyPage, name: 'Hobby' },
-  { path: '/Post/:userId', component: PostPage, name: 'Post' },
+  { path: '/Hobby', component: HobbyPage, name: 'Hobby' },
+  { path: '/Post', component: PostPage, name: 'Post' },
   { path: '/SignIn', component: SignIn, name: 'SignIn' },
-  { path: '/ToDo/:userId', component: ToDo, name: 'ToDo' },
-  { path: '/UserPage/:userId', component: UserPage, name: 'UserPage' }
+  { path: '/ToDo', component: ToDo, name: 'ToDo' },
+  { path: '/UserPage', component: UserPage, name: 'UserPage' }
 ]
 
 const router = createRouter({

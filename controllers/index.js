@@ -124,7 +124,7 @@ const getAllPosts = async (req, res) => {
 const getPostById = async (req, res) => {
   try {
     const { id } = req.params;
-    const post = await Post.findById(id)
+    const post = await Post.find({ userId: id })
     if (post) {
       return res.status(200).json({ post });
     }
