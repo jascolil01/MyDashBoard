@@ -1,11 +1,11 @@
 <template>
-  <h1>{{ userInfo._id }}'s Dashboard</h1>
+  <h1>{{ userInfo.name }}'s Dashboard</h1>
   <div>
     <!-- <CalculatorPage /> -->
     <BudgetPage />
     <HobbyPage />
     <ToDo />
-    <PostPage />
+    <PostPage :userData="userInfo" :postData="postData" :test="this.getPost" />
   </div>
 </template>
 
@@ -29,17 +29,24 @@ export default {
     BudgetPage
   },
   data: () => ({
-    userInfo: {}
+    userInfo: {},
+    postData: {}
   }),
-  mounted: function () {
-    this.getUserInfo()
+  mounted: async function () {
+    await this.getUserInfo()
+    await this.getPost()
+
   },
   methods: {
     async getUserInfo() {
-      // const route = useRoute()
       const res = await axios.get(`${BASE_URL}users/6421b9dc8f6804c90be72ce9`)
       this.userInfo = res.data.user
+    },
+    async getPost() {
+      const res = await axios.get(`${BASE_URL}posts/by_id/${this.userInfo._id}`)
+      this.postData = res.data.post
     }
+
 
 
   }
