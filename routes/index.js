@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const controllers = require('../controllers')
 const router = Router();
+const middleware = require('../middleware')
 
 router.get('/', (req, res) => res.send('This is root!'))
 
@@ -38,6 +39,12 @@ router.delete('/budget/delete_budget/:id', controllers.deleteBudget)
 
 router.post('/auth/register', controllers.Register)
 router.post('/auth/login', controllers.Login)
+router.get(
+  '/session',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controllers.CheckSession
+)
 
 
 module.exports = router;

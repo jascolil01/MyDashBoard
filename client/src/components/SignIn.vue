@@ -17,6 +17,9 @@ export default {
   components: {
 
   },
+  props: {
+    id: String
+  },
   data: () => ({
     email: '',
     password: '',
@@ -32,10 +35,10 @@ export default {
         password: this.password
       }
       let payload = await SignInUser(data)
-      console.log(payload)
       this.email = '',
         this.password = ''
       this.$router.push(`/UserPage/${payload._id}`)
+      this.$emit('handleSubmit', payload._id)
     }
   }
 }
