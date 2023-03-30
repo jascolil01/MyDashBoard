@@ -14,11 +14,12 @@
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 // import { useRoute } from 'vue-router'
-// import CalculatorPage from './CalculatorPage.vue'
+// import CalculatorPage from './CalculatorPage.vue
 import PostPage from './PostPage.vue'
 import HobbyPage from './HobbyPage.vue'
 import ToDo from './ToDo.vue'
 import BudgetPage from './BudgetPage.vue'
+import { useRoute } from 'vue-router'
 
 export default {
   name: 'UserPage',
@@ -35,14 +36,16 @@ export default {
     change: true
   }),
   mounted: async function () {
-    await this.getUserInfo()
+    await this.getInfo()
     await this.getPost()
 
   },
   methods: {
-    async getUserInfo() {
-      const res = await axios.get(`${BASE_URL}users/64246677e249cfe059e64997`)
-      this.userInfo = res.data.user
+    async getInfo() {
+      let route = useRoute()
+      const results = await axios.get(`${BASE_URL}/users/${route.params.id}`)
+      console.log(results)
+      this.userInfo = results.data.user
     },
     async getPost() {
       const res = await axios.get(`${BASE_URL}posts/by_id/${this.userInfo._id}`)
