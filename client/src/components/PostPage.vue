@@ -2,14 +2,16 @@
   <div v-for="post in postData" :key="post.id">
     <h1>{{ post.name }}</h1>
     <div v-if="update">
-      <input :placeholder=post.content :value='updatePostContent' @input="handleChangeU" />
+      <input :placeholder=post.content :value='updatePostContent'
+        @input="$emit(this.updatePostContent = $event.target.value)" />
       <button @click="updatePost(post._id)">Update post</button>
     </div>
     <p v-else @click="update = true">{{ post.content }}"click on me to update"</p>
     <button @click="deletePost(post._id)">Delete Post</button>
   </div>
   <form @submit.prevent="makePost()">
-    <input placeholder="write out a post here" :value="postContent" @input="handleChange" />
+    <input placeholder="write out a post here" :value="postContent"
+      @input="$emit(this.postContent = $event.target.value)" />
     <button type="submit">Click here to post it</button>
   </form>
 </template>
@@ -39,12 +41,6 @@ export default {
 
   },
   methods: {
-    handleChange(event) {
-      this.postContent = event.target.value
-    },
-    handleChangeU(event) {
-      this.updatePostContent = event.target.value
-    },
     async makePost() {
       const data = {
         name: this.userData.name,

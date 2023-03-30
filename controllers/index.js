@@ -293,7 +293,6 @@ const Login = async (req, res) => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email: email })
-    console.log(user)
     let matched = await middleware.comparePassword(
       user.passwordDigest,
       password

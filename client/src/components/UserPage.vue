@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     async getUserInfo() {
-      const res = await axios.get(`${BASE_URL}users/6421b9dc8f6804c90be72ce9`)
+      const res = await axios.get(`${BASE_URL}users/64246677e249cfe059e64997`)
       this.userInfo = res.data.user
     },
     async getPost() {
