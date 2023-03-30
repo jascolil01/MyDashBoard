@@ -10,7 +10,7 @@
         </div>
         <div v-else>
           <input @click="handleDelete(todo._id)" type="checkbox" v-model="todo.completed" />{{ todo.content }}
-          <button @click="handleConsole(todo._id), this.update = true">Change this item</button>
+          <button @click="handleId(todo._id), this.update = true">Change this item</button>
         </div>
       </li>
     </ul>
@@ -51,7 +51,6 @@ export default {
       this.newItem = ''
     },
     async updateTodo(x) {
-      console.log(x)
       let data = {
         content: this.updateContent
       }
@@ -61,11 +60,10 @@ export default {
       await this.grabTodo()
     },
     async handleDelete(x) {
-      console.log(this.id)
       await axios.delete(`${BASE_URL}todo/delete_todo/${x}`)
       await this.grabTodo()
     },
-    handleConsole(id) {
+    handleId(id) {
       this.id = id
     }
   }

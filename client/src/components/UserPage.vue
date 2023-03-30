@@ -7,7 +7,7 @@
     <BudgetPage />
     <HobbyPage />
     <ToDo :userData="userInfo" :todoData="todoData" :grabTodo="this.getTodo" />
-    <PostPage :userData="userInfo" :postData="postData" :test="this.getPost" />
+    <PostPage :userData="userInfo" :postData="postData" :grabPost="this.getPost" />
   </div>
 </template>
 

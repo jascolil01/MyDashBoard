@@ -11,7 +11,6 @@ const hashPassword = async (password) => {
 }
 
 const comparePassword = async (storedPassword, password) => {
-  // console.log(storedPassword)
   let passwordMatch = await bcrypt.compare(password, storedPassword)
   return passwordMatch
 }

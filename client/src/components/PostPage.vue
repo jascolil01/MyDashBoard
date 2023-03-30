@@ -1,4 +1,5 @@
 <template>
+  <h2>{{ title }}</h2>
   <div v-for="post in postData" :key="post.id">
     <h1>{{ post.name }}</h1>
     <div v-if="update">
@@ -28,10 +29,10 @@ export default {
   props: {
     userData: Object,
     postData: Object,
-    test: Function
+    grabPost: Function
   },
   data: () => ({
-    // userId: '6421b9dc8f6804c90be72ce9',
+    title: "Posts",
     postContent: '',
     update: false,
     updatePostContent: ''
@@ -49,14 +50,13 @@ export default {
       }
       await axios.post(`${BASE_URL}posts`, data)
       this.postContent = ''
-      await this.test()
+      await this.grabPost()
     },
     async deletePost(x) {
       await axios.delete(`${BASE_URL}posts/delete_post/${x}`)
-      await this.test()
+      await this.grabPost()
     },
     async updatePost(x) {
-      console.log(this.updatePostContent)
       const data = {
         name: this.userData.name,
         content: this.updatePostContent,
@@ -64,7 +64,7 @@ export default {
       }
       await axios.put(`${BASE_URL}posts/update_post/${x}`, data)
       this.update = false
-      await this.test()
+      await this.grabPost()
     }
   }
 }
