@@ -40,7 +40,7 @@ router.delete('/budget/delete_budget/:id', controllers.deleteBudget)
 router.post('/auth/register', controllers.Register)
 router.post('/auth/login', controllers.Login)
 router.get(
-  '/session',
+  '/auth/session',
   middleware.stripToken,
   middleware.verifyToken,
   controllers.CheckSession

@@ -23,6 +23,7 @@ export default {
   data: () => ({
     email: '',
     password: '',
+    x: false
   }),
   mounted() {
 
@@ -38,7 +39,7 @@ export default {
       this.email = '',
         this.password = ''
       this.$router.push(`/UserPage/${payload._id}`)
-      this.$emit('handleSubmit', payload._id)
+      this.$emit('handleSubmit', payload._id, this.x)
     }
   }
 }

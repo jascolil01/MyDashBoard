@@ -44,7 +44,6 @@ export default {
     async getInfo() {
       let route = useRoute()
       const results = await axios.get(`${BASE_URL}users/${route.params.id}`)
-      console.log(results)
       this.userInfo = results.data.user
     },
     async getPost() {

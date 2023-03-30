@@ -7,7 +7,8 @@
       </div>
     </transition>
   </router-view>
-  <button @click="signin = true">Click to sign in</button>
+  <button @click="handleLogOut" v-if="token">Sign out</button>
+  <button @click="signin = true" v-else>Click to sign in</button>
   <SignIn v-if="signin" @handleSubmit="handleSubmit" />
 </template>
 
@@ -24,19 +25,26 @@ export default {
   },
   data: () => ({
     signin: false,
-    id: ''
+    id: '',
+    token: localStorage.getItem('token')
   }),
   mounted: async function () {
-    await this.CheckSession()
+    if (this.token) { await this.CheckSession() }
   },
   methods: {
-    handleSubmit(value) {
+    handleSubmit(value, x) {
       this.id = value
-      console.log(this.id)
+      this.signin = x
+      location.reload()
     },
     async CheckSession() {
       const user = await CheckSession()
-      console.log(user)
+      this.id = user.id
+    },
+    handleLogOut() {
+      this.token = null
+      localStorage.clear()
+      this.$router.push('/')
     }
   }
 }
