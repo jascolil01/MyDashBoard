@@ -1,5 +1,6 @@
 <template>
-  <h1>{{ userInfo.name }}'s Dashboard</h1>
+  <h1 v-if="change" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
+  <h1 v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
   <div>
     <!-- <CalculatorPage /> -->
     <BudgetPage />
@@ -30,7 +31,8 @@ export default {
   },
   data: () => ({
     userInfo: {},
-    postData: {}
+    postData: {},
+    change: true
   }),
   mounted: async function () {
     await this.getUserInfo()
