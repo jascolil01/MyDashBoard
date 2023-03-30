@@ -6,7 +6,7 @@
     <!-- <CalculatorPage /> -->
     <BudgetPage />
     <HobbyPage />
-    <ToDo />
+    <ToDo :userData="userInfo" :todoData="todoData" :grabTodo="this.getTodo" />
     <PostPage :userData="userInfo" :postData="postData" :test="this.getPost" />
   </div>
 </template>
@@ -34,11 +34,13 @@ export default {
   data: () => ({
     userInfo: {},
     postData: {},
+    todoData: {},
     change: true
   }),
   mounted: async function () {
     await this.getInfo()
     await this.getPost()
+    await this.getTodo()
 
   },
   methods: {
@@ -50,6 +52,10 @@ export default {
     async getPost() {
       const res = await axios.get(`${BASE_URL}posts/by_id/${this.userInfo._id}`)
       this.postData = res.data.post
+    },
+    async getTodo() {
+      const res = await axios.get(`${BASE_URL}todo/by_userId/${this.userInfo._id}`)
+      this.todoData = res.data.todo
     },
     async deleteUser() {
       await axios.delete(`${BASE_URL}users/delete_user/${this.userInfo._id}`)

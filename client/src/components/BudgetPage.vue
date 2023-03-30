@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'ToDo',
+  name: 'BudgetPage',
   data() {
     return {
       title: 'Budget',
