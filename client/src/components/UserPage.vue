@@ -1,6 +1,7 @@
 <template>
   <h1 v-if="change" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
   <h1 v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
+  <button @click="deleteUser">Delete user</button>
   <div>
     <!-- <CalculatorPage /> -->
     <BudgetPage />
@@ -49,6 +50,10 @@ export default {
     async getPost() {
       const res = await axios.get(`${BASE_URL}posts/by_id/${this.userInfo._id}`)
       this.postData = res.data.post
+    },
+    async deleteUser() {
+      await axios.delete(`${BASE_URL}users/delete_user/${this.userInfo._id}`)
+      this.$router.push('/')
     }
 
 

@@ -1,5 +1,5 @@
 <template>
-  <NavBar :test="this.id" />
+  <NavBar :id="id" />
   <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in">
       <div :key="route.name">
@@ -9,6 +9,7 @@
   </router-view>
   <button @click="handleLogOut" v-if="token">Sign out</button>
   <button @click="signin = true" v-else>Click to sign in</button>
+  <button @click="signin = false" v-if='token === null'>Hide sign in</button>
   <SignIn v-if="signin" @handleSubmit="handleSubmit" />
 </template>
 
@@ -26,16 +27,17 @@ export default {
   data: () => ({
     signin: false,
     id: '',
-    token: localStorage.getItem('token')
+    token: null
   }),
   mounted: async function () {
     if (this.token) { await this.CheckSession() }
   },
   methods: {
-    handleSubmit(value, x) {
+    handleSubmit(value) {
       this.id = value
-      this.signin = x
-      location.reload()
+      this.signin = false
+      this.token = localStorage.getItem('token')
+      // location.reload()
     },
     async CheckSession() {
       const user = await CheckSession()
@@ -43,6 +45,7 @@ export default {
     },
     handleLogOut() {
       this.token = null
+      this.id = ''
       localStorage.clear()
       this.$router.push('/')
     }

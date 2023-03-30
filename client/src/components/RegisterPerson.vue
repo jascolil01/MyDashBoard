@@ -45,7 +45,7 @@ export default {
         this.email = '',
         this.password = '',
         this.salary = null
-      console.log("it made it here! check insomnia")
+      this.$router.push('/')
     },
   }
 }

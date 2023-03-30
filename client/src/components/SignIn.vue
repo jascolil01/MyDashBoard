@@ -1,9 +1,9 @@
 <template>
   <form @submit="handleSubmit">
     <h1>email</h1>
-    <input type="text" :value="this.email" @input="$emit(this.email = $event.target.value)">
+    <input type="email" :value="this.email" @input="$emit(this.email = $event.target.value)" required>
     <h1>password</h1>
-    <input type="text" :value="this.password" @input="$emit(this.password = $event.target.value)">
+    <input type="password" :value="this.password" @input="$emit(this.password = $event.target.value)" required>
     <button type="submit">Sign in</button>
   </form>
 </template>
@@ -22,8 +22,7 @@ export default {
   },
   data: () => ({
     email: '',
-    password: '',
-    x: false
+    password: ''
   }),
   mounted() {
 
@@ -39,7 +38,7 @@ export default {
       this.email = '',
         this.password = ''
       this.$router.push(`/UserPage/${payload._id}`)
-      this.$emit('handleSubmit', payload._id, this.x)
+      this.$emit('handleSubmit', payload._id)
     }
   }
 }
