@@ -27,17 +27,19 @@ export default {
   data: () => ({
     signin: false,
     id: '',
-    token: null
+    token: localStorage.getItem('token')
   }),
   mounted: async function () {
-    if (this.token) { await this.CheckSession() }
+    if (this.token) {
+      console.log("made it")
+      await this.CheckSession()
+    }
   },
   methods: {
     handleSubmit(value) {
       this.id = value
       this.signin = false
       this.token = localStorage.getItem('token')
-      // location.reload()
     },
     async CheckSession() {
       const user = await CheckSession()
