@@ -37,6 +37,11 @@ router.get('/budget/by_userId/:id', controllers.getBudgetByUserId)
 router.put('/budget/update_budget/:id', controllers.updateBudget)
 router.delete('/budget/delete_budget/:id', controllers.deleteBudget)
 
+router.post('/item', controllers.createHobbyItem)
+router.get('/item/by_hobbyId/:id', controllers.getHobbyItemByHobbyId)
+router.put('/item/update_item/:id', controllers.updateHobbyItem)
+router.delete('/item/delete_item/:id', controllers.deleteHobbyItem)
+
 router.post('/auth/register', controllers.Register)
 router.post('/auth/login', controllers.Login)
 router.get(

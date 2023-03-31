@@ -9,7 +9,7 @@
           <button @click="updateTodo(this.id)">Update post</button>
         </div>
         <div v-else>
-          <input @click="handleDelete(todo._id)" type="checkbox" v-model="todo.completed" />{{ todo.content }}
+          <input @click="handleDelete(todo._id)" type="checkbox" />{{ todo.content }}
           <button @click="handleId(todo._id), this.update = true">Change this item</button>
         </div>
       </li>

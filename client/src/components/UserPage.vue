@@ -5,7 +5,7 @@
   <div>
     <!-- <CalculatorPage /> -->
     <BudgetPage />
-    <HobbyPage />
+    <HobbyPage :userData="userInfo" :hobbyData="hobbyData" :grabHobby="this.getHobby" />
     <ToDo :userData="userInfo" :todoData="todoData" :grabTodo="this.getTodo" />
     <PostPage :userData="userInfo" :postData="postData" :grabPost="this.getPost" />
   </div>
@@ -35,12 +35,14 @@ export default {
     userInfo: {},
     postData: {},
     todoData: {},
+    hobbyData: {},
     change: true
   }),
   mounted: async function () {
     await this.getInfo()
     await this.getPost()
     await this.getTodo()
+    await this.getHobby()
 
   },
   methods: {
@@ -56,6 +58,10 @@ export default {
     async getTodo() {
       const res = await axios.get(`${BASE_URL}todo/by_userId/${this.userInfo._id}`)
       this.todoData = res.data.todo
+    },
+    async getHobby() {
+      const res = await axios.get(`${BASE_URL}hobby/by_userId/${this.userInfo._id}`)
+      this.hobbyData = res.data.hobby
     },
     async deleteUser() {
       await axios.delete(`${BASE_URL}users/delete_user/${this.userInfo._id}`)

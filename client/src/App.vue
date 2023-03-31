@@ -31,7 +31,6 @@ export default {
   }),
   mounted: async function () {
     if (this.token) {
-      console.log("made it")
       await this.CheckSession()
     }
   },

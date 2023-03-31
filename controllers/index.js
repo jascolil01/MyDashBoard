@@ -4,6 +4,7 @@ const Comment = require('../models/comment');
 const HobbyItem = require('../models/hobby_item');
 const Post = require('../models/post');
 const TodoItem = require('../models/todo_item');
+const ThingsForHobby = require('../models/things_for_hobby')
 const middleware = require('../middleware')
 
 
@@ -289,6 +290,51 @@ const deleteBudget = async (req, res) => {
     return res.status(500).send(error.message);
   }
 }
+const createHobbyItem = async (req, res) => {
+  try {
+    const item = await new ThingsForHobby(req.body)
+    await item.save()
+    return res.status(201).json({
+      item,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+const getHobbyItemByHobbyId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const item = await ThingsForHobby.find({
+      "hobbyId": id
+    })
+    if (item) {
+      return res.status(200).json({ item });
+    }
+    return res.status(404).send('Todo with the specified user ID does not exists');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const updateHobbyItem = async (req, res) => {
+  try {
+    const item = await ThingsForHobby.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(item)
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
+const deleteHobbyItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await ThingsForHobby.findByIdAndDelete(id)
+    if (deleted) {
+      return res.status(200).send("Item deleted");
+    }
+    throw new Error("Item not found");
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+}
 const Login = async (req, res) => {
   try {
     const { email, password } = req.body
@@ -357,5 +403,9 @@ module.exports = {
   deleteBudget,
   Login,
   Register,
-  CheckSession
+  CheckSession,
+  createHobbyItem,
+  updateHobbyItem,
+  getHobbyItemByHobbyId,
+  deleteHobbyItem
 }
