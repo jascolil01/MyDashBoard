@@ -1,5 +1,8 @@
 <template>
   <NavBar :id="id" />
+  <button @click="handleLogOut" v-if="token">Sign out</button>
+  <button @click="signin = true" v-else>Click to sign in</button>
+  <button @click="signin = false" v-if='token === null'>Hide sign in</button>
   <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in">
       <div :key="route.name">
@@ -7,9 +10,6 @@
       </div>
     </transition>
   </router-view>
-  <button @click="handleLogOut" v-if="token">Sign out</button>
-  <button @click="signin = true" v-else>Click to sign in</button>
-  <button @click="signin = false" v-if='token === null'>Hide sign in</button>
   <SignIn v-if="signin" @handleSubmit="handleSubmit" />
 </template>
 

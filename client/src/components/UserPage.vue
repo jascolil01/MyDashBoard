@@ -1,6 +1,7 @@
 <template>
-  <h1 v-if="change" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
+  <h1 v-if="change" @dblclick="handleClean()" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
   <h1 v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
+  <button v-if="clean" @click="clean = false">clear unused data</button>
   <button @click="deleteUser">Delete user</button>
   <div>
     <!-- <CalculatorPage /> -->
@@ -14,7 +15,6 @@
 <script>
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-// import { useRoute } from 'vue-router'
 // import CalculatorPage from './CalculatorPage.vue
 import PostPage from './PostPage.vue'
 import HobbyPage from './HobbyPage.vue'
@@ -36,7 +36,8 @@ export default {
     postData: {},
     todoData: {},
     hobbyData: {},
-    change: true
+    change: true,
+    clean: false
   }),
   mounted: async function () {
     await this.getInfo()
@@ -66,6 +67,10 @@ export default {
     async deleteUser() {
       await axios.delete(`${BASE_URL}users/delete_user/${this.userInfo._id}`)
       this.$router.push('/')
+    },
+    async handleClean() {
+      alert("Secrets")
+      this.clean = true
     }
 
 

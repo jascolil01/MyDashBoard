@@ -13,7 +13,7 @@ const routes = [
   { path: '/About', component: AboutPage, name: 'About' },
   { path: '/Register', component: RegisterPerson, name: 'Register' },
   { path: '/Comment/:postId', component: CommentPage, name: 'Comment' },
-  { path: '/Feed', component: FeedPage, name: 'Feed' },
+  { path: '/Feed/:userid', component: FeedPage, name: 'Feed' },
   { path: '/UserPage/:id', component: UserPage, name: 'UserPage' }
 ]
 
