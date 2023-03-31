@@ -9,9 +9,14 @@
           <button @click="updateHobby(this.id)">Update post</button>
         </div>
         <div v-else>
-          <input @click="handleDelete(hobby._id)" type="checkbox" />{{ hobby.name }}
-          <button @click="handleId(hobby._id), this.update = true">Change this item</button>
+          <!-- <input @click="handleDelete(hobby._id)" type="checkbox" /> -->
+          <h3 @click="handleHID(hobby._id)">{{ hobby.name }}</h3>
         </div>
+        <ul v-if="showItems && hobby._id === this.hId">
+          <li v-for="item in itemData" :key="item._id">{{ item.content }}</li>
+        </ul>
+        <button @click="handleId(hobby._id), this.update = true">Change this item</button>
+        <button @click="handleDelete(hobby._id)">Delete This Hobby</button>
       </li>
     </ul>
     <form @submit.prevent="addItem">
@@ -38,8 +43,13 @@ export default {
       newHobby: '',
       updateContent: '',
       update: false,
-      id: ''
+      id: '',
+      itemData: {},
+      hId: '',
+      showItems: false
     };
+  },
+  mounted: async function () {
   },
   methods: {
     async addItem() {
@@ -48,7 +58,13 @@ export default {
         userId: this.userData._id
       }
       await axios.post(`${BASE_URL}hobby`, data)
-      this.newItem = ''
+      this.grabHobby()
+      this.newHobbyd = ''
+    },
+    async getItem(x) {
+      const res = await axios.get(`${BASE_URL}item/by_hobbyId/${x}`)
+      console.log(res.data.item)
+      this.itemData = res.data.item
       this.grabHobby()
     },
     async updateHobby(x) {
@@ -66,6 +82,11 @@ export default {
     },
     handleId(id) {
       this.id = id
+    },
+    handleHID(id) {
+      this.hId = id
+      this.showItems = true
+      this.getItem(id)
     }
   }
 };

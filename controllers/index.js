@@ -357,7 +357,6 @@ const Login = async (req, res) => {
     res.status(401).send({ status: 'Error', msg: 'An error has occurred!' })
   }
 }
-
 const Register = async (req, res) => {
   try {
     const { email, password, name, username, salary } = req.body
@@ -372,7 +371,6 @@ const CheckSession = async (req, res) => {
   const { payload } = res.locals
   res.send(payload)
 }
-
 
 module.exports = {
   createUser,
