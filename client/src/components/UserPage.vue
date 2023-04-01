@@ -5,7 +5,7 @@
   <button @click="deleteUser">Delete user</button>
   <div>
     <!-- <CalculatorPage /> -->
-    <BudgetPage />
+    <BudgetPage :budgetData="this.budgetData" :userId="userInfo._id" :getBudget="this.getBudget" />
     <HobbyPage :userData="userInfo" :hobbyData="hobbyData" :grabHobby="this.getHobby" />
     <ToDo :userData="userInfo" :todoData="todoData" :grabTodo="this.getTodo" />
     <PostPage :userData="userInfo" :postData="postData" :grabPost="this.getPost" />
@@ -36,6 +36,7 @@ export default {
     postData: {},
     todoData: {},
     hobbyData: {},
+    budgetData: {},
     change: true,
     clean: false
   }),
@@ -44,6 +45,7 @@ export default {
     await this.getPost()
     await this.getTodo()
     await this.getHobby()
+    await this.getBudget()
 
   },
   methods: {
@@ -63,6 +65,10 @@ export default {
     async getHobby() {
       const res = await axios.get(`${BASE_URL}hobby/by_userId/${this.userInfo._id}`)
       this.hobbyData = res.data.hobby
+    },
+    async getBudget() {
+      const res = await axios.get(`${BASE_URL}budget/by_userId/${this.userInfo._id}`)
+      this.budgetData = res.data.budget
     },
     async deleteUser() {
       await axios.delete(`${BASE_URL}users/delete_user/${this.userInfo._id}`)

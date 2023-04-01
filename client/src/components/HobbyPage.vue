@@ -24,7 +24,7 @@
               }}</li>
             </div>
           </div>
-          <input :value="mrStark" @input="$emit(this.mrStark = $event.target.value)">
+          <input :value="mrStark" @input="$emit(this.mrStark = $event.target.value)" required>
           <button @click="addItem()">Click to add an item</button>
         </ul>
         <button @click="handleId(hobby._id), this.update = true">Change this item</button>
@@ -33,7 +33,7 @@
       </li>
     </ul>
     <form @submit.prevent="addHobby">
-      <input type="text" placeholder="Add new item" v-model="newHobby">
+      <input type="text" placeholder="Add new item" v-model="newHobby" required>
       <button>Add</button>
     </form>
   </div>
