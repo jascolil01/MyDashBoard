@@ -25,6 +25,7 @@
 
 <script>
 import axios from 'axios'
+import { BASE_URL } from '../globals'
 
 
 export default {
@@ -53,7 +54,7 @@ export default {
         price: this.budgetPrice,
         userId: this.userData._id
       }
-      await axios.post(`/api/budget`, data)
+      await axios.post(`${BASE_URL}budget`, data)
       this.budgetName = '',
         this.budgetPrice = null
       this.grabBudget()
@@ -61,7 +62,7 @@ export default {
     async handleConsole() {
       this.seeSpending = true
       let prices = []
-      const res = await axios.get(`/api/budget/by_userId/${this.userData._id}`)
+      const res = await axios.get(`${BASE_URL}budget/by_userId/${this.userData._id}`)
       let data = res.data.budget
       let arr = data.map((x) => {
         return prices.push(x.price)
@@ -77,7 +78,7 @@ export default {
       this.difference = plump.toFixed(2)
     },
     async handleDelete(x) {
-      await axios.delete(`/api/budget/delete_budget/${x}`)
+      await axios.delete(`${BASE_URL}budget/delete_budget/${x}`)
       this.grabBudget()
     }
   }

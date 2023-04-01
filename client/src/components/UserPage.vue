@@ -14,6 +14,7 @@
 
 <script>
 import axios from 'axios'
+import { BASE_URL } from '../globals'
 // import CalculatorPage from './CalculatorPage.vue
 import PostPage from './PostPage.vue'
 import HobbyPage from './HobbyPage.vue'
@@ -50,23 +51,23 @@ export default {
   methods: {
     async getInfo() {
       let route = useRoute()
-      const results = await axios.get(`/api/users/${route.params.id}`)
+      const results = await axios.get(`${BASE_URL}users/${route.params.id}`)
       this.userInfo = results.data.user
     },
     async getPost() {
-      const res = await axios.get(`/api/posts/by_id/${this.userInfo._id}`)
+      const res = await axios.get(`${BASE_URL}posts/by_id/${this.userInfo._id}`)
       this.postData = res.data.post
     },
     async getTodo() {
-      const res = await axios.get(`/api/todo/by_userId/${this.userInfo._id}`)
+      const res = await axios.get(`${BASE_URL}todo/by_userId/${this.userInfo._id}`)
       this.todoData = res.data.todo
     },
     async getHobby() {
-      const res = await axios.get(`/api/hobby/by_userId/${this.userInfo._id}`)
+      const res = await axios.get(`${BASE_URL}hobby/by_userId/${this.userInfo._id}`)
       this.hobbyData = res.data.hobby
     },
     async deleteUser() {
-      await axios.delete(`/api/users/delete_user/${this.userInfo._id}`)
+      await axios.delete(`${BASE_URL}users/delete_user/${this.userInfo._id}`)
       this.$router.push('/')
     },
     async handleClean() {
@@ -74,7 +75,7 @@ export default {
       this.clean = true
     },
     async getBudget() {
-      const res = await axios.get(`/api/budget/by_userId/${this.userInfo._id}`)
+      const res = await axios.get(`${BASE_URL}budget/by_userId/${this.userInfo._id}`)
       this.budgetData = res.data.budget
     },
 
