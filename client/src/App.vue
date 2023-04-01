@@ -55,6 +55,13 @@ export default {
 </script>
 
 <style>
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -78,8 +85,12 @@ body {
   height: fit-content;
   background-color: #1f2833;
   border-radius: 10px;
-  padding: .2vh;
+  padding: .3vh;
   transition: ease-in .2s;
+}
+
+li {
+  list-style: none;
 }
 
 .button:hover {
