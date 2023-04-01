@@ -4,7 +4,8 @@
     <h3>Your salary is ${{ userData.salary }}</h3>
     <ul>
       <li v-for="budget in budgetData" :key="budget._id">
-        {{ budget.name }}, ${{ budget.price }}<button @click='handleDelete(budget._id)'>Remove Budget Item</button>
+        {{ budget.name }}, ${{ budget.price }}<div class='button' @click='handleDelete(budget._id)'>Remove Budget Item
+        </div>
       </li>
     </ul>
     <div v-if="this.seeSpending">
@@ -12,13 +13,13 @@
       <h2 v-if="this.total">${{ this.total }} is your total money spent per month</h2>
       <h2 v-else>No money spent throughout</h2>
       <h2>${{ this.difference }} is how much you have after bills</h2>
-      <button @click="seeSpending = false">Hide monthly data</button>
+      <div class='button' @click="seeSpending = false">Hide monthly data</div>
     </div>
-    <button v-else @click="handleConsole">See monthly data</button>
+    <div class='button' v-else @click="handleConsole">See monthly data</div>
     <form @submit.prevent="addItem">
       <input type="text" placeholder="Item name" v-model="budgetName" required>
       <input type="value" placeholder="price per month" v-model="budgetPrice" required>
-      <button @click="addBudgetItem">Add</button>
+      <div class='button' @click="addBudgetItem">Add</div>
     </form>
   </div>
 </template>

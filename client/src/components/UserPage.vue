@@ -1,21 +1,30 @@
 <template>
   <h1 v-if="change" @dblclick="handleClean()" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
   <h1 v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
-  <button v-if="clean" @click="clean = false">clear unused data</button>
-  <button @click="deleteUser">Delete user</button>
-  <div>
-    <!-- <CalculatorPage /> -->
-    <BudgetPage :grabBudget="this.getBudget" :budgetData="this.budgetData" :userData="userInfo" />
-    <HobbyPage :userData="userInfo" :hobbyData="hobbyData" :grabHobby="this.getHobby" />
-    <ToDo :userData="userInfo" :todoData="todoData" :grabTodo="this.getTodo" />
-    <PostPage :userData="userInfo" :postData="postData" :grabPost="this.getPost" />
+  <div class='button' v-if="clean" @click="clean = false">clear unused data</div>
+  <div class='button' @click="deleteUser">Delete user</div>
+  <div class="main">
+    <div class="components">
+      <BudgetPage :grabBudget="this.getBudget" :budgetData="this.budgetData" :userData="userInfo" />
+    </div>
+
+    <div class="components">
+      <HobbyPage :userData="userInfo" :hobbyData="hobbyData" :grabHobby="this.getHobby" />
+    </div>
+
+    <div class="components">
+      <ToDo :userData="userInfo" :todoData="todoData" :grabTodo="this.getTodo" />
+    </div>
+
+    <div class="components">
+      <PostPage :userData="userInfo" :postData="postData" :grabPost="this.getPost" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-// import CalculatorPage from './CalculatorPage.vue
 import PostPage from './PostPage.vue'
 import HobbyPage from './HobbyPage.vue'
 import ToDo from './ToDo.vue'
@@ -25,7 +34,6 @@ import { useRoute } from 'vue-router'
 export default {
   name: 'UserPage',
   components: {
-    // CalculatorPage,
     PostPage,
     HobbyPage,
     ToDo,
@@ -85,4 +93,21 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 15px;
+}
+
+.components {
+  background-image: linear-gradient(to left, #66fcf1, #45a29e);
+  width: fit-content;
+  height: fit-content;
+  margin: 15px;
+  border-radius: 10px;
+  padding: 20px;
+}
+</style>

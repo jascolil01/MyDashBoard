@@ -1,8 +1,8 @@
 <template>
   <NavBar :id="id" />
-  <button @click="handleLogOut" v-if="token">Sign out</button>
-  <button @click="signin = true" v-else>Click to sign in</button>
-  <button @click="signin = false" v-if='token === null'>Hide sign in</button>
+  <div class='button' @click="handleLogOut" v-if="token">Sign out</div>
+  <div class='button' @click="signin = true" v-else>Click to sign in</div>
+  <div class='button' @click="signin = false" v-if='token === null'>Hide sign in</div>
   <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in">
       <div :key="route.name">
@@ -63,5 +63,27 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.25s ease-in;
+}
+
+body {
+  background-image: radial-gradient(#0b0c10, #1f2833);
+  background-repeat: repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: #c5c6c7
+}
+
+.button {
+  width: fit-content;
+  height: fit-content;
+  background-color: #1f2833;
+  border-radius: 10px;
+  padding: .2vh;
+  transition: ease-in .2s;
+}
+
+.button:hover {
+  color: #1f2833;
+  background-color: transparent;
 }
 </style>

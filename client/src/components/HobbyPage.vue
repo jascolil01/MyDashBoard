@@ -6,7 +6,7 @@
         <div v-if="update && hobby._id === this.id">
           <input :placeholder="hobby.name" :value="this.updateContent"
             @input="$emit(this.updateContent = $event.target.value)" />
-          <button @click="updateHobby(this.id)">Update post</button>
+          <div class='button' @click="updateHobby(this.id)">Update post</div>
         </div>
         <div v-else>
           <h3 @click="handleHID(hobby._id)">{{ hobby.name }}, click for things to do</h3>
@@ -16,7 +16,7 @@
             <div v-if="change && item._id === this.itemId">
               <input :placeholder="item.content" :value="itemUpdate"
                 @input="$emit(this.itemUpdate = $event.target.value)" />
-              <button @click="updateItem(item._id)">Click to change</button>
+              <div class='button' @click="updateItem(item._id)">Click to change</div>
             </div>
             <div v-else>
               <input @click="deleteItem(item._id)" type="checkbox" />
@@ -25,16 +25,16 @@
             </div>
           </div>
           <input :value="mrStark" @input="$emit(this.mrStark = $event.target.value)" required>
-          <button @click="addItem()">Click to add an item</button>
+          <div class='button' @click="addItem()">Click to add an item</div>
         </ul>
-        <button @click="handleId(hobby._id), this.update = true">Change this item</button>
-        <button @click="handleDelete(hobby._id)">Delete This Hobby</button>
-        <button @click="this.showItems = false">Hide list</button>
+        <div class='button' @click="handleId(hobby._id), this.update = true">Change this item</div>
+        <div class='button' @click="handleDelete(hobby._id)">Delete This Hobby</div>
+        <div class='button' @click="this.showItems = false">Hide list</div>
       </li>
     </ul>
     <form @submit.prevent="addHobby">
       <input type="text" placeholder="Add new item" v-model="newHobby" required>
-      <button>Add</button>
+      <div class='button'>Add</div>
     </form>
   </div>
 </template>

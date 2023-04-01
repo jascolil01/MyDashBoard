@@ -7,14 +7,15 @@
         <div v-for="comment in commentData" :key="comment._id">
           <h2>{{ comment.name }}</h2>
           <p>{{ comment.content }}</p>
-          <button v-if="this.userId === comment.userId" @click="handleDelete(comment._id)">Delete</button>
+          <div class='button' v-if="this.userId === comment.userId" @click="handleDelete(comment._id)">Delete</div>
         </div>
       </div>
       <input v-if="comment && post._id === this.postId" :value="this.content"
         @input="$emit(this.content = $event.target.value)">
-      <button v-if="this.drake === false && post._id === this.postId" @click="handleClick(post._id)">Submit</button>
+      <div class='button' v-if="this.drake === false && post._id === this.postId" @click="handleClick(post._id)">Submit
+      </div>
     </div>
-    <button v-if="drake" @click="handleClick(post._id)">add a comment</button>
+    <div class='button' v-if="drake" @click="handleClick(post._id)">add a comment</div>
 
   </div>
 </template>

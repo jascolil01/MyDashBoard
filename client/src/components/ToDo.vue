@@ -6,17 +6,17 @@
         <div v-if="update && todo._id === this.id">
           <input :placeholder="todo.content" :value="this.updateContent"
             @input="$emit(this.updateContent = $event.target.value)" />
-          <button @click="updateTodo(this.id)">Update post</button>
+          <div class='button' @click="updateTodo(this.id)">Update post</div>
         </div>
         <div v-else>
           <input @click="handleDelete(todo._id)" type="checkbox" />{{ todo.content }}
-          <button @click="handleId(todo._id), this.update = true">Change this item</button>
+          <div class='button' @click="handleId(todo._id), this.update = true">Change this item</div>
         </div>
       </li>
     </ul>
     <form @submit.prevent="addItem">
       <input type="text" placeholder="Add new item" v-model="newItem">
-      <button>Add</button>
+      <div class='button'>Add</div>
     </form>
   </div>
 </template>

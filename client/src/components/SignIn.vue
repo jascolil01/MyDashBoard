@@ -4,7 +4,7 @@
     <input type="email" :value="this.email" @input="$emit(this.email = $event.target.value)" required>
     <h1>password</h1>
     <input type="password" :value="this.password" @input="$emit(this.password = $event.target.value)" required>
-    <button type="submit">Sign in</button>
+    <div class='button' type="submit">Sign in</div>
   </form>
 </template>
 
