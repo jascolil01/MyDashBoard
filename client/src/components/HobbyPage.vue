@@ -41,7 +41,6 @@
 
 <script>
 import axios from 'axios';
-import { BASE_URL } from '@/globals';
 
 export default {
   name: 'HobbyPage',
@@ -74,12 +73,12 @@ export default {
         name: this.newHobby,
         userId: this.userData._id
       }
-      await axios.post(`${BASE_URL}hobby`, data)
+      await axios.post(`/api/hobby`, data)
       this.grabHobby()
       this.newHobbyd = ''
     },
     async getItem(x) {
-      const res = await axios.get(`${BASE_URL}item/by_hobbyId/${x}`)
+      const res = await axios.get(`/api/item/by_hobbyId/${x}`)
       this.itemData = res.data.item
       this.grabHobby()
     },
@@ -87,13 +86,13 @@ export default {
       let data = {
         name: this.updateContent
       }
-      await axios.put(`${BASE_URL}hobby/update_hobby/${x}`, data)
+      await axios.put(`/api/hobby/update_hobby/${x}`, data)
       this.updateContent = ''
       this.update = false
       await this.grabHobby()
     },
     async handleDelete(x) {
-      await axios.delete(`${BASE_URL}hobby/delete_hobby/${x}`)
+      await axios.delete(`/api/hobby/delete_hobby/${x}`)
       await this.grabHobby()
     },
     handleId(id) {
@@ -112,7 +111,7 @@ export default {
       const data = {
         content: this.itemUpdate
       }
-      await axios.put(`${BASE_URL}item/update_item/${x}`, data)
+      await axios.put(`/api/item/update_item/${x}`, data)
       this.itemUpdate = ''
       this.change = false
       this.getItem(this.hId)
@@ -122,12 +121,12 @@ export default {
         content: this.mrStark,
         hobbyId: this.hId
       }
-      await axios.post(`${BASE_URL}item`, data)
+      await axios.post(`/api/item`, data)
       this.getItem(this.hId)
       this.mrStark = ''
     },
     async deleteItem(x) {
-      await axios.delete(`${BASE_URL}item/delete_item/${x}`)
+      await axios.delete(`/api/item/delete_item/${x}`)
       this.getItem(this.hId)
     }
   }

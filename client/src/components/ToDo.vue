@@ -23,7 +23,6 @@
 
 <script>
 import axios from 'axios';
-import { BASE_URL } from '../globals'
 
 
 export default {
@@ -46,7 +45,7 @@ export default {
         content: this.newItem,
         userId: this.userData._id
       }
-      await axios.post(`${BASE_URL}todo`, data)
+      await axios.post(`/api/todo`, data)
       await this.grabTodo()
       this.newItem = ''
     },
@@ -54,13 +53,13 @@ export default {
       let data = {
         content: this.updateContent
       }
-      await axios.put(`${BASE_URL}todo/update_todo/${x}`, data)
+      await axios.put(`/api/todo/update_todo/${x}`, data)
       this.updateContent = ''
       this.update = false
       await this.grabTodo()
     },
     async handleDelete(x) {
-      await axios.delete(`${BASE_URL}todo/delete_todo/${x}`)
+      await axios.delete(`/api/todo/delete_todo/${x}`)
       await this.grabTodo()
     },
     handleId(id) {
