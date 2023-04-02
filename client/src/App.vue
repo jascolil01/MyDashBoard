@@ -1,8 +1,10 @@
 <template>
   <NavBar :id="id" />
-  <div class='button' @click="handleLogOut" v-if="token">Sign out</div>
-  <div class='button' @click="signin = true" v-else>Click to sign in</div>
-  <div class='button' @click="signin = false" v-if='token === null'>Hide sign in</div>
+  <div class="coffee">
+    <div class='button' id="signin" @click="handleLogOut" v-if="token">Sign out</div>
+    <div class='button' id="signin" @click="signin = true" v-else>Click to sign in</div>
+    <div class='button' id="signin" @click="signin = false" v-if='token === null'>Hide sign in</div>
+  </div>
   <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in">
       <div :key="route.name">
@@ -73,11 +75,11 @@ export default {
 }
 
 body {
-  background-image: radial-gradient(#0b0c10, #1f2833);
+  background-image: url('https://img.freepik.com/free-vector/gradient-dark-dynamic-lines-background_23-2148995950.jpg');
   background-repeat: repeat;
   background-size: cover;
   background-attachment: fixed;
-  color: #c5c6c7
+  color: #c5c6c7;
 }
 
 .button {
@@ -87,6 +89,16 @@ body {
   border-radius: 10px;
   padding: .3vh;
   transition: ease-in .2s;
+}
+
+.coffee {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#signin {
+  background-image: linear-gradient(to right, #45a29e, #66fcf1);
 }
 
 li {

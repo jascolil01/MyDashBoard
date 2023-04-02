@@ -103,11 +103,11 @@ export default {
 }
 
 .components {
-  background-image: linear-gradient(to left, #45a29e, #66fcf2cc);
+  background-image: linear-gradient(to bottom, #45a29e, #66fcf2cc, transparent);
   width: fit-content;
   height: fit-content;
   margin: 15px;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 100px;
+  padding: 40px;
 }
 </style>

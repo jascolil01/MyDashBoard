@@ -13,7 +13,7 @@
   <form @submit.prevent="makePost()">
     <input placeholder="write out a post here" :value="postContent"
       @input="$emit(this.postContent = $event.target.value)" />
-    <div class='button' type="submit">Click here to post it</div>
+    <button type="submit">Click here to post it</button>
   </form>
 </template>
 

@@ -72,7 +72,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
   margin: 0;
   padding: 0;
 }
@@ -142,3 +141,5 @@ a {
   translate: 0;
 }
 </style>
+
+<!-- https://www.youtube.com/watch?v=dAIVbLrAb_U to creadit for the hamburger menu -->

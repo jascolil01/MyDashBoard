@@ -4,7 +4,7 @@
     <input type="email" :value="this.email" @input="$emit(this.email = $event.target.value)" required>
     <h1>password</h1>
     <input type="password" :value="this.password" @input="$emit(this.password = $event.target.value)" required>
-    <div class='button' type="submit">Sign in</div>
+    <button type="submit">Sign in</button>
   </form>
 </template>
 
@@ -24,9 +24,6 @@ export default {
     email: '',
     password: ''
   }),
-  mounted() {
-
-  },
   methods: {
     async handleSubmit(e) {
       e.preventDefault()
