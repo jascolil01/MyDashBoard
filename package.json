@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "![My Personal Dashboard]()",
   "main": "index.js",
-  "build": "cd client && rm -rf build && npm install && npm run build",
+  "build": "cd client && rm -rf dist && npm install && npm run build",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
