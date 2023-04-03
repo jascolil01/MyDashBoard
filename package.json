@@ -4,7 +4,8 @@
   "description": "![My Personal Dashboard]()",
   "main": "index.js",
   "engines" : { 
-    "node" : ">=19.0.0"
+    "node" : ">=17.0.0 <19.0.0"
+
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

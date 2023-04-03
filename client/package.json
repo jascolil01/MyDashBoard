@@ -4,7 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "engines" : { 
-    "node" : ">=19.0.0"
+    "node" : ">=17.0.0 <19.0.0"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
