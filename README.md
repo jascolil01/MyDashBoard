@@ -1,6 +1,6 @@
 # My Personal Dashboard
 
-![My Personal Dashboard](https://imgur.com/9xtnm5g)
+![My Personal Dashboard](https://i.imgur.com/9xtnm5gm.png)
 
 # About
 
