@@ -47,18 +47,18 @@ export default {
   },
   methods: {
     async getPosts() {
-      const res = await axios.get(`/api/}posts`)
+      const res = await axios.get(`/api/posts`)
       this.postData = res.data.posts
     },
     async getInfo() {
-      const results = await axios.get(`/api/}users/${this.$route.params.userid}`)
+      const results = await axios.get(`/api/users/${this.$route.params.userid}`)
       this.name = results.data.user.name
       this.userId = results.data.user._id
     },
     async handleComment(x) {
       this.readComment = true
       this.postId = x
-      const res = await axios.get(`/api/}comment/by_postId/${x}`)
+      const res = await axios.get(`/api/comment/by_postId/${x}`)
       this.commentData = res.data.comment
     },
     async handleClick(x) {
