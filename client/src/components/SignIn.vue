@@ -5,7 +5,7 @@
     <h1>password</h1>
     <input class='input' type="password" :value="this.password" @input="$emit(this.password = $event.target.value)"
       required>
-    <button type="submit">Sign in</button>
+    <button class="button" type="submit">Sign in</button>
   </form>
 </template>
 

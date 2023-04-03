@@ -12,7 +12,11 @@
       </div>
     </transition>
   </router-view>
-  <SignIn v-if="signin" @handleSubmit="handleSubmit" />
+  <div class="test">
+    <div>
+      <SignIn v-if="signin" @handleSubmit="handleSubmit" />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -63,8 +67,14 @@ export default {
   box-sizing: border-box;
 }
 
+.test {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .input {
-  background-image: linear-gradient(to right, #0b0c10, #c5c6c7);
+  background-color: black;
   color: #45a29e;
   border-radius: 10px;
 }
@@ -112,7 +122,6 @@ li {
 }
 
 .button {
-
   width: fit-content;
   height: fit-content;
   background-color: #1f2833;
