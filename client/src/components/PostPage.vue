@@ -3,17 +3,19 @@
   <div v-for="post in postData" :key="post.id">
     <h1>{{ post.name }}</h1>
     <div v-if="update">
-      <input :placeholder=post.content :value='updatePostContent'
+      <input class='input' :placeholder=post.content :value='updatePostContent'
         @input="$emit(this.updatePostContent = $event.target.value)" />
       <div class='button' @click="updatePost(post._id)">Update post</div>
     </div>
-    <p v-else @click="update = true">{{ post.content }}"click on me to update"</p>
-    <div class='button' @click="deletePost(post._id)">Delete Post</div>
+    <p class="post" v-else @click="update = true">{{ post.content }}</p>
+    <div class="flex">
+      <div class='button' @click="deletePost(post._id)">Delete Post</div>
+    </div>
   </div>
   <form @submit.prevent="makePost()">
-    <input placeholder="write out a post here" :value="postContent"
+    <input class='input' placeholder="write out a post here" :value="postContent"
       @input="$emit(this.postContent = $event.target.value)" />
-    <button type="submit">Click here to post it</button>
+    <button class="button" type="submit">Click here to post it</button>
   </form>
 </template>
 
@@ -70,4 +72,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.post {
+  cursor: pointer;
+}
+</style>

@@ -4,18 +4,18 @@
     <ul>
       <li v-for="todo in todoData" :key="todo._id">
         <div v-if="update && todo._id === this.id">
-          <input :placeholder="todo.content" :value="this.updateContent"
+          <input class='input' :placeholder="todo.content" :value="this.updateContent"
             @input="$emit(this.updateContent = $event.target.value)" />
           <div class='button' @click="updateTodo(this.id)">Update post</div>
         </div>
         <div v-else>
-          <input @click="handleDelete(todo._id)" type="checkbox" />{{ todo.content }}
+          <input class='input' @click="handleDelete(todo._id)" type="checkbox" />{{ todo.content }}
           <div class='button' @click="handleId(todo._id), this.update = true">Change this item</div>
         </div>
       </li>
     </ul>
     <form @submit.prevent="addItem">
-      <input type="text" placeholder="Add new item" v-model="newItem">
+      <input class='input' type="text" placeholder="Add new item" v-model="newItem">
       <button class='button'>Add</button>
     </form>
   </div>
@@ -69,3 +69,8 @@ export default {
   }
 };
 </script>
+<style>
+.button {
+  color: #c5c6c7
+}
+</style>

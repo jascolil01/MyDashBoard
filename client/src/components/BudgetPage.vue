@@ -8,18 +8,24 @@
         </div>
       </li>
     </ul>
-    <div v-if="this.seeSpending">
-      <h2>${{ (userData.salary / 12).toFixed(2) }} is how much you have to spend per month</h2>
-      <h2 v-if="this.total">${{ this.total }} is your total money spent per month</h2>
-      <h2 v-else>No money spent throughout</h2>
-      <h2>${{ this.difference }} is how much you have after bills</h2>
-      <div class='button' @click="seeSpending = false">Hide monthly data</div>
+    <div class="flex">
+      <div v-if="this.seeSpending">
+        <h2>${{ (userData.salary / 12).toFixed(2) }} is how much you have to spend per month</h2>
+        <h2 v-if="this.total">${{ this.total }} is your total money spent per month</h2>
+        <h2 v-else>No money spent throughout</h2>
+        <h2>${{ this.difference }} is how much you have after bills</h2>
+        <div class="flex">
+          <div class='button' @click="seeSpending = false">Hide monthly data</div>
+        </div>
+      </div>
+      <div class='button' v-else @click="handleConsole">See monthly data</div>
     </div>
-    <div class='button' v-else @click="handleConsole">See monthly data</div>
     <form @submit.prevent="addItem">
-      <input type="text" placeholder="Item name" v-model="budgetName" required>
-      <input type="value" placeholder="price per month" v-model="budgetPrice" required>
-      <div class='button' @click="addBudgetItem">Add</div>
+      <input class='input' type="text" placeholder="Item name" v-model="budgetName" required>
+      <input class='input' type="value" placeholder="price per month" v-model="budgetPrice" required>
+      <div class="flex">
+        <div class='button' @click="addBudgetItem">Add</div>
+      </div>
     </form>
   </div>
 </template>
@@ -73,8 +79,6 @@ export default {
         return this.total = x + y
       })
       console.log(sum, "for testing")
-
-
       let plump = (this.userData.salary / 12) - sum
       this.difference = plump.toFixed(2)
     },

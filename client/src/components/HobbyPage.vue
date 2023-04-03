@@ -4,28 +4,31 @@
     <ul>
       <li v-for="hobby in hobbyData" :key="hobby._id">
         <div v-if="update && hobby._id === this.id">
-          <input :placeholder="hobby.name" :value="this.updateContent"
+          <input class='input' :placeholder="hobby.name" :value="this.updateContent"
             @input="$emit(this.updateContent = $event.target.value)" />
           <div class='button' @click="updateHobby(this.id)">Update post</div>
         </div>
         <div v-else>
-          <h3 @click="handleHID(hobby._id)">{{ hobby.name }}, click for things to do</h3>
+          <h3 class="hobby" @click="handleHID(hobby._id)">{{ hobby.name }}</h3>
         </div>
         <ul v-if="showItems && hobby._id === this.hId">
           <div v-for="item in itemData" :key="item._id">
             <div v-if="change && item._id === this.itemId">
-              <input :placeholder="item.content" :value="itemUpdate"
+              <input class='input' :placeholder="item.content" :value="itemUpdate"
                 @input="$emit(this.itemUpdate = $event.target.value)" />
               <div class='button' @click="updateItem(item._id)">Click to change</div>
             </div>
             <div v-else>
-              <input @click="deleteItem(item._id)" type="checkbox" />
+              <input class='input' @click="deleteItem(item._id)" type="checkbox" />
               <li @click="handleUpdate(item._id)">{{ item.content
               }}</li>
             </div>
           </div>
-          <input :value="mrStark" @input="$emit(this.mrStark = $event.target.value)" required>
-          <div class='button' @click="addItem()">Click to add an item</div>
+          <input class='input' placeholder="Add a task for this hobby" :value="mrStark"
+            @input="$emit(this.mrStark = $event.target.value)" required>
+          <div class="flex">
+            <div class='button' @click="addItem()">Click to add an item</div>
+          </div>
         </ul>
         <div class='button' @click="handleId(hobby._id), this.update = true">Change this item</div>
         <div class='button' @click="handleDelete(hobby._id)">Delete This Hobby</div>
@@ -33,8 +36,10 @@
       </li>
     </ul>
     <form @submit.prevent="addHobby">
-      <input type="text" placeholder="Add new item" v-model="newHobby" required>
-      <div class='button'>Add</div>
+      <input class='input' type="text" placeholder="Add new item" v-model="newHobby" required>
+      <div class="flex">
+        <div class='button'>Add</div>
+      </div>
     </form>
   </div>
 </template>
@@ -132,4 +137,10 @@ export default {
     }
   }
 };
-</script>
+</script> 
+
+<style>
+.hobby {
+  cursor: pointer;
+}
+</style>

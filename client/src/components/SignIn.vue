@@ -1,9 +1,10 @@
 <template>
   <form class="sign" @submit="handleSubmit">
     <h1>email</h1>
-    <input type="email" :value="this.email" @input="$emit(this.email = $event.target.value)" required>
+    <input class='input' type="email" :value="this.email" @input="$emit(this.email = $event.target.value)" required>
     <h1>password</h1>
-    <input type="password" :value="this.password" @input="$emit(this.password = $event.target.value)" required>
+    <input class='input' type="password" :value="this.password" @input="$emit(this.password = $event.target.value)"
+      required>
     <button type="submit">Sign in</button>
   </form>
 </template>

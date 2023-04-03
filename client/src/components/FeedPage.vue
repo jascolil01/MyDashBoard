@@ -1,22 +1,23 @@
 <template>
-  <div @click='handleComment(post._id)' v-for="post in postData" :key="post._id">
-    <h1>{{ post.name }}</h1>
-    <p>{{ post.content }}</p>
-    <div v-if="this.comment === true || post._id === this.postId">
-      <div v-if="readComment && post._id === this.postId">
-        <div v-for="comment in commentData" :key="comment._id">
-          <h2>{{ comment.name }}</h2>
-          <p>{{ comment.content }}</p>
-          <div class='button' v-if="this.userId === comment.userId" @click="handleDelete(comment._id)">Delete</div>
+  <div class="kaz">
+    <div class="feed" @click='handleComment(post._id)' v-for="post in postData" :key="post._id">
+      <h1>{{ post.name }}</h1>
+      <p>{{ post.content }}</p>
+      <div v-if="this.comment === true || post._id === this.postId">
+        <div v-if="readComment && post._id === this.postId">
+          <div v-for="comment in commentData" :key="comment._id">
+            <h2>{{ comment.name }}</h2>
+            <p>{{ comment.content }}</p>
+            <div class='comment' v-if="this.userId === comment.userId" @click="handleDelete(comment._id)">Delete</div>
+          </div>
+        </div>
+        <input class='input' v-if="comment && post._id === this.postId" :value="this.content"
+          @input="$emit(this.content = $event.target.value)">
+        <div class='comment' v-if="this.drake === false && post._id === this.postId" @click="handleClick(post._id)">Submit
         </div>
       </div>
-      <input v-if="comment && post._id === this.postId" :value="this.content"
-        @input="$emit(this.content = $event.target.value)">
-      <div class='button' v-if="this.drake === false && post._id === this.postId" @click="handleClick(post._id)">Submit
-      </div>
+      <div class='comment' v-if="drake" @click="handleClick(post._id)">add a comment</div>
     </div>
-    <div class='button' v-if="drake" @click="handleClick(post._id)">add a comment</div>
-
   </div>
 </template>
 
@@ -75,6 +76,7 @@ export default {
         await axios.post(`${BASE_URL}comment`, data)
         this.postId = ''
         this.comment = false,
+          this.content = '',
           this.drake = true
       }
     },
@@ -86,4 +88,34 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.kaz {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feed {
+  display: flex;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid #45a29e;
+  background-color: #1f2833;
+}
+
+.comment {
+  cursor: pointer;
+  background-color: #45a29e;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 20px;
+}
+</style>

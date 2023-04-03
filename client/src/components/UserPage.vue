@@ -1,8 +1,10 @@
 <template>
-  <h1 v-if="change" @dblclick="handleClean()" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
-  <h1 v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
+  <h1 class="user" v-if="change" @dblclick="handleClean()" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
+  <h1 class="user" v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
   <div class='button' v-if="clean" @click="clean = false">clear unused data</div>
-  <div class='button' @click="deleteUser">Delete user</div>
+  <div class="flex">
+    <div class='button' @click="deleteUser">Delete user</div>
+  </div>
   <div class="main">
     <div class="components">
       <BudgetPage :grabBudget="this.getBudget" :budgetData="this.budgetData" :userData="userInfo" />
@@ -94,6 +96,16 @@ export default {
 </script>
 
 <style>
+.user {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .main {
   display: flex;
   flex-direction: row;

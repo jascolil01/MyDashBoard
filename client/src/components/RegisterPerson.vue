@@ -2,15 +2,15 @@
   <h1>Register your user below</h1>
   <form @submit="handleSubmit">
     <h1>Username</h1>
-    <input :value="this.username" @input="$emit(this.username = $event.target.value)" required />
+    <input class='input' :value="this.username" @input="$emit(this.username = $event.target.value)" required />
     <h1>Name</h1>
-    <input :value="this.name" @input="$emit(this.name = $event.target.value)" required />
+    <input class='input' :value="this.name" @input="$emit(this.name = $event.target.value)" required />
     <h1>Email</h1>
-    <input :value="this.email" @input="$emit(this.email = $event.target.value)" required />
+    <input class='input' :value="this.email" @input="$emit(this.email = $event.target.value)" required />
     <h1>Salary</h1>
-    <input type="number" :value="this.salary" @input="$emit(this.salary = $event.target.value)" required />
+    <input class='input' type="number" :value="this.salary" @input="$emit(this.salary = $event.target.value)" required />
     <h1>Password</h1>
-    <input :value="this.password" @input="$emit(this.password = $event.target.value)" required />
+    <input class='input' :value="this.password" @input="$emit(this.password = $event.target.value)" required />
     <button type="submit">Click to register</button>
   </form>
 </template>

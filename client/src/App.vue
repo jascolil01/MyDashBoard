@@ -63,6 +63,16 @@ export default {
   box-sizing: border-box;
 }
 
+.input {
+  background-image: linear-gradient(to right, #0b0c10, #c5c6c7);
+  color: #45a29e;
+  border-radius: 10px;
+}
+
+::placeholder {
+  color: #45a29e;
+}
+
 
 .fade-enter-from,
 .fade-leave-to {
@@ -80,6 +90,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   color: #c5c6c7;
+  font-family: 'Raleway', sans-serif;
 }
 
 h1,
@@ -88,6 +99,7 @@ h3,
 p,
 ul {
   text-align: center;
+  padding: 0%;
 }
 
 li {
@@ -100,6 +112,7 @@ li {
 }
 
 .button {
+
   width: fit-content;
   height: fit-content;
   background-color: #1f2833;
