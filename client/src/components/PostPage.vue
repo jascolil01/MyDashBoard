@@ -22,6 +22,7 @@
 <script>
 
 import axios from 'axios';
+import { BASE_URL } from '@/globals'
 
 export default {
   name: 'PostPage',
@@ -50,12 +51,12 @@ export default {
         content: this.postContent,
         userId: this.userData._id
       }
-      await axios.post(`/api/posts`, data)
+      await axios.post(`${BASE_URL}/api/posts`, data)
       this.postContent = ''
       await this.grabPost()
     },
     async deletePost(x) {
-      await axios.delete(`/api/posts/delete_post/${x}`)
+      await axios.delete(`${BASE_URL}/api/posts/delete_post/${x}`)
       await this.grabPost()
     },
     async updatePost(x) {
@@ -64,7 +65,7 @@ export default {
         content: this.updatePostContent,
         userId: this.userData._id
       }
-      await axios.put(`/api/posts/update_post/${x}`, data)
+      await axios.put(`${BASE_URL}/api/posts/update_post/${x}`, data)
       this.update = false
       await this.grabPost()
     }

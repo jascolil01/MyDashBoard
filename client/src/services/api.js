@@ -1,7 +1,6 @@
 import Axios from 'axios'
-require('dotenv').config()
+import { BASE_URL } from '@/globals'
 
-export const BASE_URL = process.env.MONGODB_URI
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
