@@ -1,5 +1,5 @@
 <template>
-  <form @submit="handleSubmit">
+  <form class="sign" @submit="handleSubmit">
     <h1>email</h1>
     <input type="email" :value="this.email" @input="$emit(this.email = $event.target.value)" required>
     <h1>password</h1>
@@ -41,4 +41,10 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.sign {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+}
+</style>

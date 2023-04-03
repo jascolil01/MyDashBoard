@@ -82,6 +82,23 @@ body {
   color: #c5c6c7;
 }
 
+h1,
+h2,
+h3,
+p,
+ul {
+  text-align: center;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
 .button {
   width: fit-content;
   height: fit-content;
