@@ -23,7 +23,7 @@
 
 <script>
 import axios from 'axios';
-import { BASE_URL } from '@/globals';
+
 
 export default {
   name: 'FeedPage',
@@ -47,18 +47,18 @@ export default {
   },
   methods: {
     async getPosts() {
-      const res = await axios.get(`${BASE_URL}posts`)
+      const res = await axios.get(`/api/}posts`)
       this.postData = res.data.posts
     },
     async getInfo() {
-      const results = await axios.get(`${BASE_URL}users/${this.$route.params.userid}`)
+      const results = await axios.get(`/api/}users/${this.$route.params.userid}`)
       this.name = results.data.user.name
       this.userId = results.data.user._id
     },
     async handleComment(x) {
       this.readComment = true
       this.postId = x
-      const res = await axios.get(`${BASE_URL}comment/by_postId/${x}`)
+      const res = await axios.get(`/api/}comment/by_postId/${x}`)
       this.commentData = res.data.comment
     },
     async handleClick(x) {
@@ -73,7 +73,7 @@ export default {
           postId: this.postId,
           userId: this.userId
         }
-        await axios.post(`${BASE_URL}comment`, data)
+        await axios.post(`/api/}comment`, data)
         this.postId = ''
         this.comment = false,
           this.content = '',
@@ -81,7 +81,7 @@ export default {
       }
     },
     async handleDelete(x) {
-      await axios.delete(`${BASE_URL}comment/delete_comment/${x}`)
+      await axios.delete(`/api/}comment/delete_comment/${x}`)
       this.handleComment(this.postId)
     }
   }
