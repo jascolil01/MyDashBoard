@@ -5,7 +5,7 @@
     <div v-if="update">
       <input class='input' :placeholder=post.content :value='updatePostContent'
         @input="$emit(this.updatePostContent = $event.target.value)" />
-      <div class='button' @click="updatePost(post._id)">Update post</div>
+      <div class='button' @click="updatePost(post._id)">Update Post</div>
     </div>
     <p class="post" v-else @click="update = true">{{ post.content }}</p>
     <div class="flex">

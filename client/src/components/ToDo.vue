@@ -6,7 +6,7 @@
         <div v-if="update && todo._id === this.id">
           <input class='input' :placeholder="todo.content" :value="this.updateContent"
             @input="$emit(this.updateContent = $event.target.value)" />
-          <div class='button' @click="updateTodo(this.id)">Update post</div>
+          <div class='button' @click="updateTodo(this.id)">Update Post</div>
         </div>
         <div v-else>
           <input class='input' @click="handleDelete(todo._id)" type="checkbox" />{{ todo.content }}

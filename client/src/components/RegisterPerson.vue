@@ -11,7 +11,7 @@
     <input class='input' type="number" :value="this.salary" @input="$emit(this.salary = $event.target.value)" required />
     <h1>Password</h1>
     <input class='input' :value="this.password" @input="$emit(this.password = $event.target.value)" required />
-    <button type="submit">Click to register</button>
+    <button type="submit">Click to Register</button>
   </form>
 </template>
 

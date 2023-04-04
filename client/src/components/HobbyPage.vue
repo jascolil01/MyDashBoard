@@ -6,7 +6,7 @@
         <div v-if="update && hobby._id === this.id">
           <input class='input' :placeholder="hobby.name" :value="this.updateContent"
             @input="$emit(this.updateContent = $event.target.value)" />
-          <div class='button' @click="updateHobby(this.id)">Update post</div>
+          <div class='button' @click="updateHobby(this.id)">Update Post</div>
         </div>
         <div v-else>
           <h3 class="hobby" @click="handleHID(hobby._id)">{{ hobby.name }}</h3>
@@ -16,7 +16,7 @@
             <div v-if="change && item._id === this.itemId">
               <input class='input' :placeholder="item.content" :value="itemUpdate"
                 @input="$emit(this.itemUpdate = $event.target.value)" />
-              <div class='button' @click="updateItem(item._id)">Click to change</div>
+              <div class='button' @click="updateItem(item._id)">Click to Change</div>
             </div>
             <div v-else>
               <input class='input' @click="deleteItem(item._id)" type="checkbox" />
@@ -32,7 +32,7 @@
         </ul>
         <div class='button' @click="handleId(hobby._id), this.update = true">Change this item</div>
         <div class='button' @click="handleDelete(hobby._id)">Delete This Hobby</div>
-        <div class='button' @click="this.showItems = false">Hide list</div>
+        <div class='button' @click="this.showItems = false">Hide List</div>
       </li>
     </ul>
     <form @submit.prevent="addHobby">
