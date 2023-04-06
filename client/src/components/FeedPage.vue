@@ -73,7 +73,7 @@ export default {
           postId: this.postId,
           userId: this.userId
         }
-        await axios.post(`${BASE_URL}/api/}comment`, data)
+        await axios.post(`${BASE_URL}/api/comment`, data)
         this.postId = ''
         this.comment = false,
           this.content = '',
@@ -81,7 +81,7 @@ export default {
       }
     },
     async handleDelete(x) {
-      await axios.delete(`${BASE_URL}/api/}comment/delete_comment/${x}`)
+      await axios.delete(`${BASE_URL}/api/comment/delete_comment/${x}`)
       this.handleComment(this.postId)
     }
   }

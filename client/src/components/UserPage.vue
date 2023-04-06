@@ -1,7 +1,6 @@
 <template>
-  <h1 class="user" v-if="change" @dblclick="handleClean()" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
+  <h1 class="user" v-if="change" @click="change = false">{{ userInfo.name }}'s Dashboard</h1>
   <h1 class="user" v-else @click="change = true">{{ userInfo.username }}'s Dashboard</h1>
-  <div class='button' v-if="clean" @click="clean = false">clear unused data</div>
   <div class="flex">
     <div class='button' @click="deleteUser">Delete user</div>
   </div>
@@ -48,7 +47,6 @@ export default {
     hobbyData: {},
     budgetData: {},
     change: true,
-    clean: false
   }),
   mounted: async function () {
     await this.getInfo()

@@ -16,7 +16,7 @@
     </ul>
     <form @submit.prevent="addItem">
       <input class='input' type="text" placeholder="Add new item" v-model="newItem">
-      <button class='button'>Add</button>
+      <button type="submit" class='button'>Add</button>
     </form>
   </div>
 </template>

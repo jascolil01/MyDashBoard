@@ -24,7 +24,7 @@
       <input class='input' type="text" placeholder="Item name" v-model="budgetName" required>
       <input class='input' type="value" placeholder="price per month" v-model="budgetPrice" required>
       <div class="flex">
-        <div class='button' @click="addBudgetItem">Add</div>
+        <button type="submit" class='button' @click="addBudgetItem">Add</button>
       </div>
     </form>
   </div>

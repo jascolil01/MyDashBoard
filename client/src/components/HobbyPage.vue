@@ -38,7 +38,7 @@
     <form @submit.prevent="addHobby">
       <input class='input' type="text" placeholder="Add new item" v-model="newHobby" required>
       <div class="flex">
-        <div class='button'>Add</div>
+        <button type='submit' class='button'>Add</button>
       </div>
     </form>
   </div>
