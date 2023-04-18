@@ -15,6 +15,7 @@ This application will allow you to keep track of your daily life activities. Wan
 
 Add calculator
 Add Google auth
+Add food tracker
 
 # Contact Me
 
